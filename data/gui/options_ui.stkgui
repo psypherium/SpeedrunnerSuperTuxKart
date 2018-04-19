@@ -36,10 +36,10 @@
 
                 <spacer height="4" width="10" />
 
-                <div layout="horizontal-row" proportion="1" height="fit">
-                    <checkbox id="show-login"/>
+                <div proportion="1" height="fit" layout="horizontal-row">
+                    <checkbox id="speedrun-timer"/>
                     <spacer width="20" height="100%" />
-                    <label height="100%" I18N="In the ui settings" text="Always show login screen"/>
+                    <label height="100%" I18N="In the ui settings" text="Enable story mode timer"/>
                 </div>
             </div>
 
@@ -72,11 +72,11 @@
                 </div>
 
                 <spacer height="4" width="10" />
-                
+
                 <div layout="horizontal-row" proportion="1" height="fit">
-                    <checkbox id="split_screen_horizontally"/>
+                    <checkbox id="show-login"/>
                     <spacer width="20" height="100%" />
-                    <label height="100%" I18N="In the ui settings" text="Multiplayer splits screen horizontally"/>
+                    <label height="100%" I18N="In the ui settings" text="Always show login screen"/>
                 </div>
             </div>
 
