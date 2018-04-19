@@ -656,6 +656,7 @@ namespace GUIEngine
 
 #include "guiengine/engine.hpp"
 
+#include "challenges/speedrun_timer.hpp"
 #include "config/user_config.hpp"
 #include "font/bold_face.hpp"
 #include "font/digit_face.hpp"
@@ -1087,7 +1088,7 @@ namespace GUIEngine
 
         g_device->getVideoDriver()
                 ->beginScene(true, true, video::SColor(255,100,101,140));
-        renderLoading();
+        renderLoading(true,true);
         g_device->getVideoDriver()->endScene();
     }   // init
 
@@ -1162,26 +1163,14 @@ namespace GUIEngine
         // ---- some menus may need updating
         if (gamestate != GAME)
         {
-            if (ScreenKeyboard::isActive())
-            {
-                ScreenKeyboard::getCurrent()->onUpdate(dt);
-            }
-            else if (ModalDialog::isADialogActive())
-            {
+            if (ModalDialog::isADialogActive())
                 ModalDialog::getCurrent()->onUpdate(dt);
-            }
             else
-            {
                 getCurrentScreen()->onUpdate(elapsed_time);
-            }
         }
         else
         {
-            if (ScreenKeyboard::isActive())
-            {
-                ScreenKeyboard::getCurrent()->onUpdate(dt);
-            }
-            else if (ModalDialog::isADialogActive())
+            if (ModalDialog::isADialogActive())
             {
                 ModalDialog::getCurrent()->onUpdate(dt);
             }
@@ -1245,6 +1234,9 @@ namespace GUIEngine
         // draw FPS if enabled
         if ( UserConfigParams::m_display_fps ) irr_driver->displayFPS();
 
+        // draw Speedrun timer if enabled
+        if ( UserConfigParams::m_display_speedrun_timer ) irr_driver->displayTimer();
+
         g_driver->enableMaterial2D(false);
 
 
@@ -1266,7 +1258,7 @@ namespace GUIEngine
     // -----------------------------------------------------------------------
     std::vector<irr::video::ITexture*> g_loading_icons;
 
-    void renderLoading(bool clearIcons)
+    void renderLoading(bool clearIcons, bool launching)
     {
 #ifndef SERVER_ONLY
         if (clearIcons) g_loading_icons.clear();
@@ -1332,6 +1324,13 @@ namespace GUIEngine
                 x = ICON_MARGIN;
             }
         }
+
+        // draw Speedrun timer if enabled
+        // Don't try to draw it on launch or bad things will happen
+        if ( !launching && UserConfigParams::m_display_speedrun_timer )
+        {
+            irr_driver->displayTimer();
+        }
 #endif
     } // renderLoading
 
@@ -1345,7 +1344,7 @@ namespace GUIEngine
 
             g_device->getVideoDriver()
                     ->beginScene(true, true, video::SColor(255,100,101,140));
-            renderLoading(false);
+            renderLoading(false,true);
             g_device->getVideoDriver()->endScene();
         }
         else

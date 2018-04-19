@@ -174,6 +174,7 @@
 #include "addons/news_manager.hpp"
 #include "audio/music_manager.hpp"
 #include "audio/sfx_manager.hpp"
+#include "challenges/speedrun_timer.hpp"
 #include "challenges/unlock_manager.hpp"
 #include "config/hardware_stats.hpp"
 #include "config/player_manager.hpp"
@@ -189,7 +190,6 @@
 #include "graphics/material_manager.hpp"
 #include "graphics/particle_kind_manager.hpp"
 #include "graphics/referee.hpp"
-#include "graphics/sp/sp_base.hpp"
 #include "guiengine/engine.hpp"
 #include "guiengine/event_handler.hpp"
 #include "guiengine/dialog_queue.hpp"
@@ -228,7 +228,6 @@
 #include "states_screens/register_screen.hpp"
 #include "states_screens/state_manager.hpp"
 #include "states_screens/user_screen.hpp"
-#include "states_screens/dialogs/init_android_dialog.hpp"
 #include "states_screens/dialogs/message_dialog.hpp"
 #include "tracks/arena_graph.hpp"
 #include "tracks/track.hpp"
@@ -548,8 +547,7 @@ void cmdLineHelp()
                               "./data/stk_config.xml\n"
     "  -k,  --numkarts=NUM     Set number of karts on the racetrack.\n"
     "       --kart=NAME        Use kart NAME.\n"
-    "       --ai=a,b,...       Use the karts a, b, ... for the AI, and additional player kart.\n"
-    "       --aiNP=a,b,...     Use the karts a, b, ... for the AI, no additional player kart.\n"
+    "       --ai=a,b,...       Use the karts a, b, ... for the AI.\n"
     "       --laps=N           Define number of laps to N.\n"
     "       --mode=N           N=1 Beginner, N=2 Intermediate, N=3 Expert, N=4 SuperTux.\n"
     "       --type=N           N=0 Normal, N=1 Time trial, N=2 Follow The Leader\n"
@@ -597,7 +595,6 @@ void cmdLineHelp()
     "  -h,  --help             Show this help.\n"
     "       --log=N            Set the verbosity to a value between\n"
     "                          0 (Debug) and 5 (Only Fatal messages)\n"
-    "       --logbuffer=N      Buffers up to N lines log lines before writing.\n"
     "       --root=DIR         Path to add to the list of STK root directories.\n"
     "                          You can specify more than one by separating them\n"
     "                          with colons (:).\n"
@@ -611,10 +608,10 @@ void cmdLineHelp()
     "       --disable-light-shaft Disable light shafts (God rays).\n"
     "       --enable-dof       Enable depth of field.\n"
     "       --disable-dof      Disable depth of field.\n"
-    "       --enable-particles  Enable particles.\n"
-    "       --disable-particles Disable particles.\n"
-    "       --enable-animated-characters  Enable animated characters.\n"
-    "       --disable-animated-characters Disable animated characters.\n"
+    "       --enable-gi        Enable global illumination.\n"
+    "       --disable-gi       Disable global illumination.\n"
+    "       --enable-gfx       Enable animated scenery.\n"
+    "       --disable-gfx      Disable animated scenery.\n"
     "       --enable-motion-blur Enable motion blur.\n"
     "       --disable-motion-blur Disable motion blur.\n"
     "       --enable-mlaa      Enable anti-aliasing.\n"
@@ -629,13 +626,12 @@ void cmdLineHelp()
     "       --disable-hd-textures Disable high definition textures.\n"
     "       --enable-dynamic-lights Enable advanced pipline.\n"
     "       --disable-dynamic-lights Disable advanced pipline.\n"
+    "       --enable-trilinear  Use trilinear texture filtering.\n"
+    "       --disable-trilinear Use bilinear texture filtering.\n"
     "       --anisotropic=n     Anisotropic filtering quality (0 to disable).\n"
     "                           Takes precedence over trilinear or bilinear\n"
     "                           texture filtering.\n"
     "       --shadows=n         Set resolution of shadows (0 to disable).\n"
-    "       --apitrace          This will disable buffer storage and\n"
-    "                           writing gpu query strings to opengl, which\n"
-    "                           can be seen later in apitrace.\n"
     "\n"
     "You can visit SuperTuxKart's homepage at "
     "https://supertuxkart.net\n\n",
@@ -669,8 +665,6 @@ int handleCmdLineOutputModifier()
     int n;
     if(CommandLine::has("--log", &n))
         Log::setLogLevel(n);
-    if (CommandLine::has("--logbuffer", &n))
-        Log::setBufferSize(n);
 
     if(CommandLine::has("--log=nocolor"))
     {
@@ -714,12 +708,6 @@ int handleCmdLinePreliminary()
         UserConfigParams::m_verbosity |= UserConfigParams::LOG_ALL;
     if(CommandLine::has("--online"))
         MainMenuScreen::m_enable_online=true;
-#if !(defined(SERVER_ONLY) || defined(ANDROID))
-    if(CommandLine::has("--apitrace"))
-    {
-        SP::sp_apitrace = true;
-    }
-#endif
 
     std::string s;
     if(CommandLine::has("--stk-config", &s))
@@ -813,16 +801,16 @@ int handleCmdLinePreliminary()
         UserConfigParams::m_dof = true;
     else if (CommandLine::has("--disable-dof"))
         UserConfigParams::m_dof = false;
-    // particles effects
-    if (CommandLine::has("--enable-particles"))
-        UserConfigParams::m_particles_effects = 2;
-    else if (CommandLine::has("--disable-particles"))
-        UserConfigParams::m_particles_effects = 0;
-    // animated characters
-    if (CommandLine::has("--enable-animated-characters"))
-        UserConfigParams::m_animated_characters = true;
-    else if (CommandLine::has("--disable-animated-characters"))
-        UserConfigParams::m_animated_characters = false;
+    // global illumination
+    if (CommandLine::has("--enable-gi"))
+        UserConfigParams::m_gi = true;
+    else if (CommandLine::has("--disable-gi"))
+        UserConfigParams::m_gi = false;
+    // animated scenery
+    if (CommandLine::has("--enable-gfx"))
+        UserConfigParams::m_graphical_effects = 2;
+    else if (CommandLine::has("--disable-gfx"))
+        UserConfigParams::m_graphical_effects = 0;
     if (CommandLine::has("--enable-motion-blur"))
         UserConfigParams::m_motionblur = true;
     else if (CommandLine::has("--disable-motion-blur"))
@@ -851,6 +839,11 @@ int handleCmdLinePreliminary()
         UserConfigParams::m_high_definition_textures =  2 | 1;
     else if (CommandLine::has("--disable-hd-textures"))
         UserConfigParams::m_high_definition_textures = 2;
+    if (CommandLine::has("--enable-trilinear"))
+        UserConfigParams::m_trilinear = true;
+    else if (CommandLine::has("--disable-trilinear"))
+        UserConfigParams::m_trilinear = false;
+
 
     // Enable loading grand prix from local directory
     if(CommandLine::has("--add-gp-dir", &s))
@@ -1114,13 +1107,6 @@ int handleCmdLine()
         race_manager->setNumKarts((int)l.size()+1);
     }   // --ai
 
-    if(CommandLine::has("--aiNP", &s))
-    {
-        const std::vector<std::string> l=StringUtils::split(std::string(s),',');
-        race_manager->setDefaultAIKartList(l);
-        race_manager->setNumKarts((int)l.size());
-    }   // --aiNP
-
     if(CommandLine::has( "--mode", &s) || CommandLine::has( "--difficulty", &s))
     {
         int n = atoi(s.c_str());
@@ -1204,16 +1190,16 @@ int handleCmdLine()
 
     if(CommandLine::has("--numkarts", &n) ||CommandLine::has("-k", &n))
     {
-        UserConfigParams::m_default_num_karts = n;
-        if(UserConfigParams::m_default_num_karts > stk_config->m_max_karts)
+        UserConfigParams::m_num_karts = n;
+        if(UserConfigParams::m_num_karts > stk_config->m_max_karts)
         {
             Log::warn("main", "Number of karts reset to maximum number %d.",
                       stk_config->m_max_karts);
-            UserConfigParams::m_default_num_karts = stk_config->m_max_karts;
+            UserConfigParams::m_num_karts = stk_config->m_max_karts;
         }
-        race_manager->setNumKarts( UserConfigParams::m_default_num_karts );
+        race_manager->setNumKarts( UserConfigParams::m_num_karts );
         Log::verbose("main", "%d karts will be used.",
-                     (int)UserConfigParams::m_default_num_karts);
+                     (int)UserConfigParams::m_num_karts);
     }   // --numkarts
 
     if(CommandLine::has( "--no-start-screen") ||
@@ -1677,21 +1663,6 @@ int main(int argc, char *argv[] )
                 }
                 Log::warn("main", "Screen size is too small!");
             }
-            
-            #ifdef ANDROID
-            if (UserConfigParams::m_multitouch_controls == 0)
-            {
-                int32_t touch = AConfiguration_getTouchscreen(
-                                                    global_android_app->config);
-                
-                if (touch != ACONFIGURATION_TOUCHSCREEN_NOTOUCH)
-                {
-                    InitAndroidDialog* init_android = new InitAndroidDialog(
-                                                                    0.6f, 0.6f);
-                    GUIEngine::DialogQueue::get()->pushDialog(init_android);
-                }
-            }
-            #endif
 
             if (GraphicsRestrictions::isDisabled(
                 GraphicsRestrictions::GR_DRIVER_RECENT_ENOUGH))
@@ -1708,13 +1679,12 @@ int main(int argc, char *argv[] )
             }
             else if (!CVS->isGLSL())
             {
-                #if !defined(ANDROID)
                 if (UserConfigParams::m_old_driver_popup)
                 {
                     #ifdef USE_GLES2
                     irr::core::stringw version = "OpenGL ES 3.0";
                     #else
-                    irr::core::stringw version = "OpenGL 3.3";
+                    irr::core::stringw version = "OpenGL 3.1";
                     #endif
                     MessageDialog *dialog =
                         new MessageDialog(_("Your OpenGL version appears to be "
@@ -1725,7 +1695,6 @@ int main(int argc, char *argv[] )
                                             /*from queue*/ true);
                     GUIEngine::DialogQueue::get()->pushDialog(dialog);
                 }
-                #endif
                 Log::warn("OpenGL", "OpenGL version is too old!");
             }
         }
@@ -1807,8 +1776,9 @@ int main(int argc, char *argv[] )
             race_manager->setupPlayerKartInfo();
             race_manager->startNew(false);
             main_loop->run();
-            // The run() function will only return if the user aborts.
-            Log::flushBuffers();
+            // well, actually run() will never return, since
+            // it exits after replaying history (see history::GetNextDT()).
+            // So the next line is just to make this obvious here!
             exit(-3);
         }
 
@@ -1833,15 +1803,17 @@ int main(int argc, char *argv[] )
             race_manager->setupPlayerKartInfo();
             race_manager->startNew(false);
         }
+        //create the speedrun timer before going in the main loop
+        //as it needs to be able to run continuously
+        speedrun_timer = new SpeedrunTimer();
+
         main_loop->run();
 
     }  // try
     catch (std::exception &e)
     {
-        Log::flushBuffers();
         Log::error("main", "Exception caught : %s.",e.what());
         Log::error("main", "Aborting SuperTuxKart.");
-        Log::flushBuffers();
     }
 
     /* Program closing...*/
@@ -1864,8 +1836,6 @@ int main(int argc, char *argv[] )
 #ifdef DEBUG
     MemoryLeaks::checkForLeaks();
 #endif
-
-    Log::flushBuffers();
 
 #ifndef WIN32
     if (user_config) //close logfiles
@@ -1930,6 +1900,7 @@ static void cleanSuperTuxKart()
     Online::ProfileManager::destroy();
     GUIEngine::DialogQueue::deallocate();
     if(font_manager)            delete font_manager;
+    if(speedrun_timer)          delete speedrun_timer;
 
     // Now finish shutting down objects which a separate thread. The
     // RequestManager has been signaled to shut down as early as possible,

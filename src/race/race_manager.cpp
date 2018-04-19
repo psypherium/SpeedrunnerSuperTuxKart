@@ -21,6 +21,7 @@
 #include <iostream>
 #include <algorithm>
 
+#include "challenges/speedrun_timer.hpp"
 #include "challenges/unlock_manager.hpp"
 #include "config/player_manager.hpp"
 #include "config/saved_grand_prix.hpp"
@@ -66,7 +67,7 @@ RaceManager::RaceManager()
 {
     // Several code depends on this, e.g. kart_properties
     assert(DIFFICULTY_FIRST == 0);
-    m_num_karts          = UserConfigParams::m_default_num_karts;
+    m_num_karts          = UserConfigParams::m_num_karts;
     m_difficulty         = DIFFICULTY_HARD;
     m_major_mode         = MAJOR_MODE_SINGLE;
     m_minor_mode         = MINOR_MODE_NORMAL_RACE;
@@ -280,9 +281,7 @@ void RaceManager::computeRandomKartList()
     }
 
     m_ai_kart_list.clear();
-
-    //Use the command line options AI list.
-    unsigned int m = std::min( (unsigned) m_num_karts,  (unsigned)m_default_ai_list.size());
+    unsigned int m = std::min( (unsigned) n,  (unsigned)m_default_ai_list.size());
 
     for(unsigned int i=0; i<m; i++)
     {
@@ -433,9 +432,7 @@ void RaceManager::startNew(bool from_overworld)
     {
         if (m_continue_saved_gp)
         {
-            int next_track = m_saved_gp->getNextTrack();
-            if (next_track < (int)m_tracks.size())
-                m_track_number = next_track;
+            m_track_number = m_saved_gp->getNextTrack();
             m_saved_gp->loadKarts(m_kart_status);
         }
         else 
@@ -468,6 +465,8 @@ void RaceManager::startNextRace()
     // sfx_manager->dump();
 
     IrrlichtDevice* device = irr_driver->getDevice();
+    //pause the speedrun timer during loading
+    speedrun_timer->pauseSpeedrunTimer(true);
     GUIEngine::renderLoading();
     device->getVideoDriver()->endScene();
     device->getVideoDriver()->beginScene(true, true,

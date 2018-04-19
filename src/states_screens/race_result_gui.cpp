@@ -21,6 +21,7 @@
 #include "audio/music_manager.hpp"
 #include "audio/sfx_manager.hpp"
 #include "audio/sfx_base.hpp"
+#include "challenges/speedrun_timer.hpp"
 #include "challenges/unlock_manager.hpp"
 #include "config/player_manager.hpp"
 #include "config/user_config.hpp"
@@ -201,21 +202,12 @@ void RaceResultGUI::enableAllButtons()
         // In case of a GP:
         // ----------------
         top->setVisible(false);
-        top->setFocusable(false);
 
         middle->setText(_("Continue"));
         middle->setVisible(true);
 
-        if (race_manager->getTrackNumber() + 1 < race_manager->getNumOfTracks()) 
-        {
-            bottom->setText(_("Abort Grand Prix"));
-            bottom->setVisible(true);
-            bottom->setFocusable(true);
-        }
-        else
-        {
-            bottom->setFocusable(false);
-        }
+        bottom->setText(_("Abort Grand Prix"));
+        bottom->setVisible(true);
 
         middle->setFocusForPlayer(PLAYER_ID_GAME_MASTER);
     }
@@ -284,6 +276,7 @@ void RaceResultGUI::eventCallback(GUIEngine::Widget* widget,
                 if (unlocked[n]->getId() == "fortmagma")
                 {
                     gameCompleted = true;
+                    speedrun_timer->stopSpeedrunTimer();
                     break;
                 }
             }
@@ -387,25 +380,17 @@ void RaceResultGUI::eventCallback(GUIEngine::Widget* widget,
         return;
     }
 
+    // This is a normal race, nothing was unlocked
+    // -------------------------------------------
     StateManager::get()->popMenu();
     if (name == "top")                 // Setup new race
     {
         race_manager->exitRace();
         race_manager->setAIKartOverride("");
-
-        //If pressing continue quickly in a losing challenge
-        if (race_manager->raceWasStartedFromOverworld())
-        {
-            StateManager::get()->resetAndGoToScreen(MainMenuScreen::getInstance());
-            OverWorld::enterOverWorld();
-        }
-        else
-        {
-            Screen* newStack[] = { MainMenuScreen::getInstance(),
-                                  RaceSetupScreen::getInstance(),
-                                  NULL };
-            StateManager::get()->resetAndSetStack(newStack);
-        }
+        Screen* newStack[] = { MainMenuScreen::getInstance(),
+                              RaceSetupScreen::getInstance(),
+                              NULL };
+        StateManager::get()->resetAndSetStack(newStack);
     }
     else if (name == "middle")        // Restart
     {
