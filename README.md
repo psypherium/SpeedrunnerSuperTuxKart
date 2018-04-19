@@ -19,6 +19,7 @@
 ### SSTK-P 0.9.4 Roadmap:
 - Replace all music with CC4.0 techno by psypherium (except Hacienda)
 - change heaps of stuff, maybe learn about some coding
+- merge code and data repos?
 - openGL code refactoring in preperation for transition to vulkan renderer (reduce CPU overhead)
 - that last one is a joke
 
