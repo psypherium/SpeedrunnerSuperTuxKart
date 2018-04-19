@@ -16,7 +16,7 @@
 - Upload Precompiled Binary of latest git code (0.9.4 pre-alpha)
 ### SSTK 0.9.4 Roadmap:
 - Hardfreeze when 0.9.4 code released
-### SSTK-M(P) {SpeedrunnerSuperTuxKart - Modern edition) 0.9.4 Roadmap:
+### SSTK-M(P) {SpeedrunnerSuperTuxKart - Modern edition (PsyFork)} 0.9.4 Roadmap:
 - Antifreeze code
 - Replace all music with CC4.0 techno by psypherium (except Hacienda)
 - change heaps of stuff, maybe learn about some coding
