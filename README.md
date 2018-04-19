@@ -16,10 +16,14 @@
 - Upload Precompiled Binary of latest git code (0.9.4 pre-alpha)
 ### SSTK 0.9.4 Roadmap:
 - Hardfreeze when 0.9.4 code released
-### SSTK-P 0.9.4 Roadmap:
+### SSTK-M(P) {SpeedrunnerSuperTuxKart - Modern edition) 0.9.4 Roadmap:
+- Antifreeze code
 - Replace all music with CC4.0 techno by psypherium (except Hacienda)
 - change heaps of stuff, maybe learn about some coding
 - merge code and data repos?
+- replace kiki with kawaiikiki
+- add katie (kde dev mascot)
+- seek out legacy code and annihilate it (simple pipeline, etc)
 - openGL code refactoring in preperation for transition to vulkan renderer (reduce CPU overhead)
 - that last one is a joke
 
