@@ -1,7 +1,13 @@
-Planned additions:
+## Planned additions:
 
 - Add alayans timer mod
 - Upload precompiled binaries
+- more
+
+## Methodology:
+
+- Hardfreeze when 0.9.4 code released
+- more
 
 
 
