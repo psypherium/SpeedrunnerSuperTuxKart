@@ -380,25 +380,17 @@ void RaceResultGUI::eventCallback(GUIEngine::Widget* widget,
         return;
     }
 
+    // This is a normal race, nothing was unlocked
+    // -------------------------------------------
     StateManager::get()->popMenu();
     if (name == "top")                 // Setup new race
     {
         race_manager->exitRace();
         race_manager->setAIKartOverride("");
-
-        //If pressing continue quickly in a losing challenge
-        if (race_manager->raceWasStartedFromOverworld())
-        {
-            StateManager::get()->resetAndGoToScreen(MainMenuScreen::getInstance());
-            OverWorld::enterOverWorld();
-        }
-        else
-        {
-            Screen* newStack[] = { MainMenuScreen::getInstance(),
-                                  RaceSetupScreen::getInstance(),
-                                  NULL };
-            StateManager::get()->resetAndSetStack(newStack);
-        }
+        Screen* newStack[] = { MainMenuScreen::getInstance(),
+                              RaceSetupScreen::getInstance(),
+                              NULL };
+        StateManager::get()->resetAndSetStack(newStack);
     }
     else if (name == "middle")        // Restart
     {

@@ -281,9 +281,7 @@ void RaceManager::computeRandomKartList()
     }
 
     m_ai_kart_list.clear();
-
-    //Use the command line options AI list.
-    unsigned int m = std::min( (unsigned) m_num_karts,  (unsigned)m_default_ai_list.size());
+    unsigned int m = std::min( (unsigned) n,  (unsigned)m_default_ai_list.size());
 
     for(unsigned int i=0; i<m; i++)
     {
