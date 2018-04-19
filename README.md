@@ -1,5 +1,5 @@
 # SpeedrunnerSuperTuxKart (SSTK)
-[![Build Status](https://travis-ci.org/psypherium/SpeedrunnerSuperTuxKart.svg?branch=master)](https://travis-ci.org/supertuxkart/stk-code)
+[![Build Status](https://travis-ci.org/psypherium/SpeedrunnerSuperTuxKart.svg?branch=master)](https://travis-ci.org/psypherium/SpeedrunnerSuperTuxKart)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/psypherium/SpeedrunnerSuperTuxKart?svg=true&branch=master)](https://ci.appveyor.com/psypherium/SpeedrunnerSuperTuxKart)
 
 <hr><br><br>
