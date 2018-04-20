@@ -7,7 +7,7 @@
 - SuperTuxKart - Modern edition is an code learning experiment inspired by Alayan's codework on the speedrum timer mod and base game development.
 - https://www.speedrun.com/user/Alayan
 - https://www.youtube.com/user/AlayanT
-- I highly encourage anyone to push to or pull from all sorts of the strange experimental code that might end up here.
+- I highly encourage that anyone push to or pull from all sorts of the strange experimental code that might end up here.
 
 ## SpeedrunnerSuperTuxKart 0.9.3 Download (Linux x64):
 - SpeedrunnerSuperTuxKart is made from 0.9.3 frozen code + Alayan's timer mod.
