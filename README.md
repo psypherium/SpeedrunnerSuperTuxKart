@@ -18,7 +18,7 @@
 - Hardfreeze when 0.9.4 code released
 ### SSTK-M(P) {SpeedrunnerSuperTuxKart - Modern edition (PsyFork)} 0.9.4 Roadmap:
 - Antifreeze code
-- Replace all music with CC4.0 techno by psypherium (except Hacienda)
+- Replace all music with 192khtz ogg CC4.0 techno by psypherium (except Hacienda)
 - change heaps of stuff, maybe learn about some coding
 - merge code and data repos?
 - replace kiki with kawaiikiki
