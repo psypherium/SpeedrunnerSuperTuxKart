@@ -4,13 +4,13 @@
 <hr><br><br>
 
 ## Information
-- SuperTuxKart - Modern edition is an code learning experiment inspired by Alayan's codework on timing mods and base game development
+- SuperTuxKart - Modern edition is an code learning experiment inspired by Alayan's codework on the speedrum timer mod and base game development.
 - https://www.speedrun.com/user/Alayan
 - https://www.youtube.com/user/AlayanT
-- I highly encourage anyone to push &/or pull all sorts of strange experimental code to &/or from here
+- I highly encourage anyone to push to or pull from all sorts of the strange experimental code that might end up here.
 
 ## SpeedrunnerSuperTuxKart 0.9.3 Download (Linux x64):
-- SpeedrunnerSuperTuxKart is made from 0.9.3 frozen code + Alayan's timer mod
+- SpeedrunnerSuperTuxKart is made from 0.9.3 frozen code + Alayan's timer mod.
 - https://github.com/psypherium/SpeedrunnerSuperTuxKart/releases/download/0.9.3-timer/supertuxkart-0.9.3-speedrunner_edition.tar.gz
 
 ## Precompiled STK Git+SVN Build as of 20/04/18 (Linux x64):
@@ -24,22 +24,22 @@ My plans for this fork are:
 - To learn stuff about code
 
 ### STK-M {SuperTuxKart - Modern edition} 1.0.0 Feature Plans:
-- Antifreeze code
-- Conjure mare developers from thin air (Note: retain typo as extra joke)
-- Change heaps of stuff, maybe learn about some C++ and other stuff
+- Antifreeze code.
+- Conjure mare developers from thin air. (Note: retain typo as extra joke)
+- Change heaps of stuff, maybe learn about some C++ and other stuff.
 - Merge code and data repos?
 - Replace Kiki with "kawaiikiki"
-- Add Katie (KDE dev mascot)
-- Other issues tracked on github
-- Seek out legacy code and annihilate it (simple pipeline, etc)
-- OpenGL code refactoring in preperation for transition to vulkan renderer (reduce CPU overhead)
-- That last one is a joke
+- Add Katie. (KDE dev mascot)
+- Other issues tracked on github.
+- Seek out legacy code and annihilate it. (simple pipeline, etc)
+- OpenGL code refactoring in preperation for transition to vulkan renderer. (reduce CPU overhead)
+- That last one is a joke.
 
 
 ### STK-M(P) {SuperTuxKart - Modern edition (PsyFork)} 1.0.0.0 Feature Plans:
-- Codebase is a copy of STK-M (Includes all changes in STK-M plan)
-- Replace all .OGG files with 192khtz .OPUS CC BY-SA 4.0techno (except the Hacienda song)
-- music from psypherium, also planning to negotiate CC BY-SA 4.0 licensing arrangements from various underground artists (binaerpilot? (stk-enterprise) HoQ? (cornfield Crossing)
+- Codebase is a copy of STK-M. (Includes all changes in STK-M plan)
+- Replace all .OGG files with 192khtz .OPUS CC BY-SA 4.0 techno. (except the Hacienda song)
+- music from psypherium, also planning to negotiate CC BY-SA 4.0 licensing arrangements from various underground artists. (binaerpilot? (stk-enterprise) HoQ? (Cornfield Crossing)
 
 <br><br><br>
 
