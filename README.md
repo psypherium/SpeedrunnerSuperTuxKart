@@ -1,16 +1,19 @@
-# SpeedrunnerSuperTuxKart (SSTK)
+# SuperTuxKart - Modern edition (STK-M)
 [![Build Status](https://travis-ci.org/psypherium/SpeedrunnerSuperTuxKart.svg?branch=master)](https://travis-ci.org/psypherium/SpeedrunnerSuperTuxKart)
 
 <hr><br><br>
 
 ## Information
-- SpeedrunnerSuperTuxKart is made from 0.9.3 frozen code + Alayan's timer mod
-- Source code is an area for code experimentation
+- SuperTuxKart - Modern edition is an code learning experiment inspired by Alayan's codework on timing mods and base game development
+- https://www.speedrun.com/user/Alayan
+- https://www.youtube.com/user/AlayanT
+- I highly encourage anyone to push and pull all sorts of strange experimental code here
 
-## Precompiled SSTK 0.9.3 Download (Linux x64):
+## SpeedrunnerSuperTuxKart 0.9.3 Download (Linux x64):
+- SpeedrunnerSuperTuxKart is made from 0.9.3 frozen code + Alayan's timer mod
 - https://github.com/psypherium/SpeedrunnerSuperTuxKart/releases/download/0.9.3-timer/supertuxkart-0.9.3-speedrunner_edition.tar.gz
 
-## Precompiled STK Git+SVN Build as of 20/04/18
+## Precompiled STK Git+SVN Build as of 20/04/18 (Linux x64):
 - https://github.com/psypherium/SpeedrunnerSuperTuxKart/releases/download/0.9.4-pre_alpha/stk-git.tar.gz
 
 # Fork Info
@@ -34,6 +37,7 @@ My plans for this fork are:
 
 
 ### STK-M(P) {SuperTuxKart - Modern edition (PsyFork)} 1.0.0.0 Feature Plans:
+- Codebase is a copy of STK-M (Includes all changes in STK-M plan)
 - Replace all .OGG files with 192khtz .OPUS CC4.0 techno (except the Hacienda song)
 - music from psypherium, also planning to negotiate fully open licensing arrangements from various underground artists (binaerpilot? (stk-enterprise) HoQ? (cornfield Crossing)
 
