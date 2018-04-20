@@ -25,8 +25,8 @@ My plans for this fork are:
 
 ### STK-M {SuperTuxKart - Modern edition} 1.0.0 Feature Plans:
 - Antifreeze code
-- Conjure mare developers from thin air
-- Change heaps of stuff, maybe learn about some coding
+- Conjure mare developers from thin air (Note: retain typo as extra joke)
+- Change heaps of stuff, maybe learn about some C++ and other stuff
 - Merge code and data repos?
 - Replace Kiki with "kawaiikiki"
 - Add Katie (KDE dev mascot)
