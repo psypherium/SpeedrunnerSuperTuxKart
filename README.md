@@ -20,7 +20,7 @@ My plans for this fork are:
 - To hold code for SSTK-M (+SSTK-MP patch)
 - To learn stuff about code
 
-### SSTK-M {SpeedrunnerSuperTuxKart - Modern edition} 1.0.0 Feature Plans:
+### STK-M {SuperTuxKart - Modern edition} 1.0.0 Feature Plans:
 - Antifreeze code
 - Conjure mare developers from thin air
 - Change heaps of stuff, maybe learn about some coding
@@ -33,9 +33,9 @@ My plans for this fork are:
 - That last one is a joke
 
 
-### SSTK-M(P) {SpeedrunnerSuperTuxKart - Modern edition (PsyFork)} 1.0.0.0 Feature Plans:
+### STK-M(P) {SuperTuxKart - Modern edition (PsyFork)} 1.0.0.0 Feature Plans:
 - Replace all .OGG files with 192khtz .OPUS CC4.0 techno (except the Hacienda song)
-- music from psypherium, also planning to negotiate fully open licensing arrangements from various underground artists (binaerpilot? HoQ?)
+- music from psypherium, also planning to negotiate fully open licensing arrangements from various underground artists (binaerpilot? (stk-enterprise) HoQ? (cornfield Crossing)
 
 <br><br><br>
 
