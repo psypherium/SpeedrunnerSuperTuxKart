@@ -1,24 +1,26 @@
 # SpeedrunnerSuperTuxKart (SSTK)
 [![Build Status](https://travis-ci.org/psypherium/SpeedrunnerSuperTuxKart.svg?branch=master)](https://travis-ci.org/psypherium/SpeedrunnerSuperTuxKart)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/psypherium/SpeedrunnerSuperTuxKart?svg=true&branch=master)](https://ci.appveyor.com/psypherium/SpeedrunnerSuperTuxKart)
 
 <hr><br><br>
 
-## Precompiled 0.9.3 Download:
+## Fork Info
+My plans for this fork are:
+- To host binary files for SSTK (Precompiled from 0.9.3 frozen code)
+- To hold code for SSTK-M (+SSTK-MP patch)
+- To hold a precompiled binary of recent git code (0.9.4 pre-alpha)
+- To learn stuff about code
+
+## Precompiled SSTK 0.9.3 Download (Linux x64):
 - https://github.com/psypherium/SpeedrunnerSuperTuxKart/releases/download/0.9.3-timer/supertuxkart-0.9.3-speedrunner_edition.tar.gz
+
 ### Information
-- tar.gz is precompiled from 0.9.3 frozen code + timer
-- Source code is latest git code + timer
-### Current Features:
-- Added alayans timer mod
-- Uploaded precompiled binaries
-### Planned Features:
-- Upload Precompiled Binary of latest git code (0.9.4 pre-alpha)
-### SSTK 0.9.4 Roadmap:
-- Hardfreeze when 0.9.4 code released
-### SSTK-M(P) {SpeedrunnerSuperTuxKart - Modern edition (PsyFork)} 0.9.4 Roadmap:
+- SpeedrunnerSuperTuxKart is made from 0.9.3 frozen code + Alayan's timer mod
+- Source code is an area for code experimentation
+
+### SSTK-M(P) {SpeedrunnerSuperTuxKart - Modern edition (PsyFork)} 0.9.4 Feature Plans:
 - Antifreeze code
-- Replace all music with 192khtz ogg CC4.0 techno by psypherium (except Hacienda)
+- Replace all .OGG files with 192khtz .OPUS CC4.0 techno (except the Hacienda song)
+- music from psypherium, also planning to negotiate fully open licensing arrangements from various underground artists (binaerpilot? HoQ?)
 - change heaps of stuff, maybe learn about some coding
 - merge code and data repos?
 - replace kiki with kawaiikiki
@@ -28,7 +30,9 @@
 - that last one is a joke
 
 <br><br><br>
+
 ## Original README.md is below:
+
 <hr>
 
 
