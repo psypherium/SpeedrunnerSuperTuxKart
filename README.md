@@ -11,7 +11,7 @@
 - https://github.com/psypherium/SpeedrunnerSuperTuxKart/releases/download/0.9.3-timer/supertuxkart-0.9.3-speedrunner_edition.tar.gz
 
 ## Precompiled STK Git+SVN Build as of 20/04/18
-- https://github.com/psypherium/SpeedrunnerSuperTuxKart/releases/tag/0.9.4-pre_alpha
+- https://github.com/psypherium/SpeedrunnerSuperTuxKart/releases/download/0.9.4-pre_alpha/stk-git.tar.gz
 
 # Fork Info
 My plans for this fork are:
