@@ -1,3 +1,14 @@
+## SuperTuxKart 0.9.4 - notes by Alayan (https://www.speedrun.com/stk/thread/rbejy)
+
+- The new mansion track will replace the old (good riddance)
+- The story mode bug when sometimes the points of a challenge were not counted if skipped too fast (which is very annoying when in a run) has been fixed
+- Better menu UI scaling (there should be no more tiny icons in difficulty/race mode selection screen)
+- Rescue has been improved : the kart won't appear out of nowhere on the road, there will be an animation before (useful to not collide with a rescued kart)
+- The bubble shield will flash quickly when it's about to end
+- For shortcuts fans, this will be more disappointing, as they are mostly patched out with new checklines. Some small are still here though (math's class shortcut between the chairs, Hacienda's sand shortcut, minigolf's shortcut)
+- Ranking computation improved (kart won't be displayed first if it goes backwards after crossing the lapline)
+- AI improvements in item/nitro handling (by me). The main AI weaknesses are in the way it chooses its path and skids, but this still make an important difference, as it previously used nitro in the worst way possible and had some glaring weaknesses in item usage (didn't know to use a shield/swatter to remove a bomb/parachute, for example).
+
 ## SuperTuxKart 0.9.3
 * Reduced RAM and VRAM usage, reducing load times by Auria and Benau
 * New mesh format optimized for space and hardware skinning
