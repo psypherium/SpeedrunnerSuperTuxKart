@@ -38,8 +38,8 @@ My plans for this fork are:
 
 ### STK-M(P) {SuperTuxKart - Modern edition (PsyFork)} 1.0.0.0 Feature Plans:
 - Codebase is a copy of STK-M (Includes all changes in STK-M plan)
-- Replace all .OGG files with 192khtz .OPUS CC4.0 techno (except the Hacienda song)
-- music from psypherium, also planning to negotiate fully open licensing arrangements from various underground artists (binaerpilot? (stk-enterprise) HoQ? (cornfield Crossing)
+- Replace all .OGG files with 192khtz .OPUS CC BY-SA 4.0techno (except the Hacienda song)
+- music from psypherium, also planning to negotiate CC BY-SA 4.0 licensing arrangements from various underground artists (binaerpilot? (stk-enterprise) HoQ? (cornfield Crossing)
 
 <br><br><br>
 
