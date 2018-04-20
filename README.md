@@ -3,31 +3,39 @@
 
 <hr><br><br>
 
-## Fork Info
-My plans for this fork are:
-- To host binary files for SSTK (Precompiled from 0.9.3 frozen code)
-- To hold code for SSTK-M (+SSTK-MP patch)
-- To hold a precompiled binary of recent git code (0.9.4 pre-alpha)
-- To learn stuff about code
+## Information
+- SpeedrunnerSuperTuxKart is made from 0.9.3 frozen code + Alayan's timer mod
+- Source code is an area for code experimentation
 
 ## Precompiled SSTK 0.9.3 Download (Linux x64):
 - https://github.com/psypherium/SpeedrunnerSuperTuxKart/releases/download/0.9.3-timer/supertuxkart-0.9.3-speedrunner_edition.tar.gz
 
-### Information
-- SpeedrunnerSuperTuxKart is made from 0.9.3 frozen code + Alayan's timer mod
-- Source code is an area for code experimentation
+## Precompiled STK Git+SVN Build as of 20/04/18
+- https://github.com/psypherium/SpeedrunnerSuperTuxKart/releases/tag/0.9.4-pre_alpha
 
-### SSTK-M(P) {SpeedrunnerSuperTuxKart - Modern edition (PsyFork)} 0.9.4 Feature Plans:
+# Fork Info
+My plans for this fork are:
+- ~~To host binary files for SSTK (Precompiled from 0.9.3 frozen code)~~ (Complete)
+- ~~To hold a precompiled binary of recent git code (0.9.4 pre-alpha)~~ (Complete)
+- To hold code for SSTK-M (+SSTK-MP patch)
+- To learn stuff about code
+
+### SSTK-M {SpeedrunnerSuperTuxKart - Modern edition} 1.0.0 Feature Plans:
 - Antifreeze code
+- Conjure mare developers from thin air
+- Change heaps of stuff, maybe learn about some coding
+- Merge code and data repos?
+- Replace Kiki with "kawaiikiki"
+- Add Katie (KDE dev mascot)
+- Other issues tracked on github
+- Seek out legacy code and annihilate it (simple pipeline, etc)
+- OpenGL code refactoring in preperation for transition to vulkan renderer (reduce CPU overhead)
+- That last one is a joke
+
+
+### SSTK-M(P) {SpeedrunnerSuperTuxKart - Modern edition (PsyFork)} 1.0.0.0 Feature Plans:
 - Replace all .OGG files with 192khtz .OPUS CC4.0 techno (except the Hacienda song)
 - music from psypherium, also planning to negotiate fully open licensing arrangements from various underground artists (binaerpilot? HoQ?)
-- change heaps of stuff, maybe learn about some coding
-- merge code and data repos?
-- replace kiki with kawaiikiki
-- add katie (kde dev mascot)
-- seek out legacy code and annihilate it (simple pipeline, etc)
-- openGL code refactoring in preperation for transition to vulkan renderer (reduce CPU overhead)
-- that last one is a joke
 
 <br><br><br>
 
