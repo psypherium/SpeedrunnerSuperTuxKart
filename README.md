@@ -16,6 +16,8 @@
 ## Precompiled STK Git+SVN Build as of 20/04/18 (Linux x64):
 - https://github.com/psypherium/SpeedrunnerSuperTuxKart/releases/download/0.9.4-pre_alpha/stk-git.tar.gz
 
+New build soon, build requests welcomed.
+
 # Fork Info
 My plans for this fork are:
 - ~~To host binary files for SSTK (Precompiled from 0.9.3 frozen code)~~ (Complete)
@@ -24,22 +26,52 @@ My plans for this fork are:
 - To learn stuff about code
 
 ### STK-M {SuperTuxKart - Modern edition} 1.0.0 Feature Plans:
-- Antifreeze code.
+- Actual (Non-joke) issues tracked though github.
 - Conjure mare developers from thin air. (Note: retain typo as extra joke)
 - Change heaps of stuff, maybe learn about some C++ and other stuff.
 - Merge code and data repos?
 - Replace Kiki with "kawaiikiki"
 - Add Katie. (KDE dev mascot)
-- Other issues tracked on github.
 - Seek out legacy code and annihilate it. (simple pipeline, etc)
 - OpenGL code refactoring in preperation for transition to vulkan renderer. (reduce CPU overhead)
-- That last one is a joke.
 
 
 ### STK-M(P) {SuperTuxKart - Modern edition (PsyFork)} 1.0.0.0 Feature Plans:
 - Codebase is a copy of STK-M. (Includes all changes in STK-M plan)
 - Replace all .OGG files with 192khtz .OPUS CC BY-SA 4.0 techno. (except the Hacienda song)
 - music from psypherium, also planning to negotiate CC BY-SA 4.0 licensing arrangements from various underground artists. (binaerpilot? (stk-enterprise) HoQ? (Cornfield Crossing)
+
+
+### Dependencies
+
+Meh, you probably have them all anyway, I wouldn't worry. If you run into a problem check the original readme below.
+
+### Compiling
+
+To compile SuperTuxKart - Modern Edition, run the following commands inside `stk-code` directory:
+
+```bash
+mkdir cmake_build
+cd cmake_build
+cmake ..
+make -j4
+```
+STK can then be run from the build directory with `bin/supertuxkart`
+
+#### Keeping your build up to date
+
+To recompile the latest code without redownloading the entire source, first run the ```svn up``` command inside the 'stk-assets' directory, then run the following commands inside the 'stk-code' directory:
+
+```bash
+git pull
+cd cmake_build
+cmake ..
+make -j4
+```
+
+##### Build Speed Optimization
+
+"-j4" is an example, for a faster build, use "-jx" instead, where "x" is the amount of CPU threads you have, minus one.
 
 <br><br><br>
 
