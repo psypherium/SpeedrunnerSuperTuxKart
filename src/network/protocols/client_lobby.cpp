@@ -18,6 +18,7 @@
 
 #include "network/protocols/client_lobby.hpp"
 
+#include "audio/sfx_manager.hpp"
 #include "config/user_config.hpp"
 #include "config/player_manager.hpp"
 #include "guiengine/modaldialog.hpp"
@@ -96,7 +97,7 @@ void ClientLobby::clearPlayers()
  */
 void ClientLobby::setAddress(const TransportAddress &address)
 {
-    m_server_address.copy(address);
+    m_server_address = address;
 }   // setAddress
 
 //-----------------------------------------------------------------------------
@@ -235,8 +236,9 @@ void ClientLobby::addAllPlayers(Event* event)
         float kart_color = data.getFloat();
         uint32_t online_id = data.getUInt32();
         PerPlayerDifficulty ppd = (PerPlayerDifficulty)data.getUInt8();
+        uint8_t local_id = data.getUInt8();
         auto player = std::make_shared<NetworkPlayerProfile>(peer, player_name,
-            host_id, kart_color, online_id, ppd);
+            host_id, kart_color, online_id, ppd, local_id);
         std::string kart_name;
         data.decodeString(&kart_name);
         player->setKartName(kart_name);
@@ -319,35 +321,7 @@ void ClientLobby::update(int ticks)
         break;
     case CONNECTED:
         break;
-    case KART_SELECTION:
-    {
-        // In case the user opened a user info dialog
-        GUIEngine::ModalDialog::dismiss();
-        NetworkKartSelectionScreen* screen =
-            NetworkKartSelectionScreen::getInstance();
-        screen->setAvailableKartsFromServer(m_available_karts);
-        // In case of auto-connect, use random karts (or previous kart) from
-        // server and go to track selection (or grand prix later)
-        if (NetworkConfig::get()->isAutoConnect())
-        {
-            input_manager->setMasterPlayerOnly(true);
-            for (auto& p : NetworkConfig::get()->getNetworkPlayers())
-            {
-                StateManager::get()
-                    ->createActivePlayer(std::get<1>(p), std::get<0>(p));
-            }
-            input_manager->getDeviceManager()->setAssignMode(ASSIGN);
-            TracksScreen::getInstance()->setNetworkTracks();
-            TracksScreen::getInstance()->push();
-        }
-        else
-        {
-            screen->push();
-        }
-        m_state.store(SELECTING_KARTS);
-    }
-    break;
-    case SELECTING_KARTS:
+    case SELECTING_ASSETS:
         break;
     case PLAYING:
         break;
@@ -408,6 +382,7 @@ void ClientLobby::disconnectedPlayer(Event* event)
     if (!checkDataSize(event, 1)) return;
 
     NetworkString &data = event->data();
+    SFXManager::get()->quickSound("appear");
     unsigned disconnected_player_count = data.getUInt8();
     for (unsigned i = 0; i < disconnected_player_count; i++)
     {
@@ -438,8 +413,6 @@ void ClientLobby::connectionAccepted(Event* event)
 
     STKHost::get()->setMyHostId(data.getUInt32());
     assert(!NetworkConfig::get()->isAddingNetworkPlayers());
-    m_game_setup->setNumLocalPlayers((int)
-        NetworkConfig::get()->getNetworkPlayers().size());
     // connection token
     uint32_t token = data.getToken();
     peer->setClientServerToken(token);
@@ -480,8 +453,8 @@ void ClientLobby::handleServerInfo(Event* event)
     NetworkConfig::get()->setServerMode(u_data);
     auto game_mode = NetworkConfig::get()->getLocalGameMode();
     race_manager->setMinorMode(game_mode.first);
-    // We may use single mode in network even it's grand prix
-    //race_manager->setMajorMode(game_mode.second);
+    // We use single mode in network even it's grand prix
+    race_manager->setMajorMode(RaceManager::MAJOR_MODE_SINGLE);
 
     //I18N: In the networking lobby
     core::stringw mode_name = NetworkConfig::get()->getModeName(u_data);
@@ -540,6 +513,9 @@ void ClientLobby::updatePlayerList(Event* event)
         // icon to be used, see NetworkingLobby::loadedFromFile
         std::get<3>(pl) = data.getUInt8() == 1 /*if server owner*/ ? 0 :
             std::get<1>(pl) != 0 /*if online account*/ ? 1 : 2;
+        PerPlayerDifficulty d = (PerPlayerDifficulty)data.getUInt8();
+        if (d == PLAYER_DIFFICULTY_HANDICAP)
+            std::get<2>(pl) = _("%s (handicapped)", std::get<2>(pl));
         players.push_back(pl);
     }
     NetworkingLobby::getInstance()->updatePlayers(players);
@@ -548,6 +524,7 @@ void ClientLobby::updatePlayerList(Event* event)
 //-----------------------------------------------------------------------------
 void ClientLobby::becomingServerOwner()
 {
+    SFXManager::get()->quickSound("wee");
     core::stringw msg = _("You are now the owner of server.");
     MessageQueue::add(MessageQueue::MT_GENERIC, msg);
     STKHost::get()->setAuthorisedToControl(true);
@@ -566,13 +543,13 @@ void ClientLobby::handleChat(Event* event)
 {
     if (!UserConfigParams::m_lobby_chat)
         return;
-    std::string message;
-    event->data().decodeString(&message);
-    Log::info("ClientLobby", "%s", message.c_str());
+    SFXManager::get()->quickSound("plopp");
+    core::stringw message;
+    event->data().decodeString16(&message);
+    Log::info("ClientLobby", "%s", StringUtils::wideToUtf8(message).c_str());
     if (message.size() > 0)
     {
-        NetworkingLobby::getInstance()->addMoreServerInfo(
-            StringUtils::utf8ToWide(message));
+        NetworkingLobby::getInstance()->addMoreServerInfo(message);
     }
 }   // handleChat
 
@@ -659,8 +636,8 @@ void ClientLobby::startingRaceNow()
  */
 void ClientLobby::startSelection(Event* event)
 {
-    m_state.store(KART_SELECTION);
     const NetworkString& data = event->data();
+    uint8_t skip_kart_screen = data.getUInt8();
     const unsigned kart_num = data.getUInt16();
     const unsigned track_num = data.getUInt16();
     m_available_karts.clear();
@@ -677,7 +654,33 @@ void ClientLobby::startSelection(Event* event)
         data.decodeString(&track);
         m_available_tracks.insert(track);
     }
-    Log::info("ClientLobby", "Kart selection starts now");
+
+    // In case the user opened a user info dialog
+    GUIEngine::ModalDialog::dismiss();
+    NetworkKartSelectionScreen* screen =
+        NetworkKartSelectionScreen::getInstance();
+    screen->setAvailableKartsFromServer(m_available_karts);
+    // In case of auto-connect or continue a grand prix, use random karts
+    // (or previous kart) from server and go to track selection
+    if (NetworkConfig::get()->isAutoConnect() || skip_kart_screen == 1)
+    {
+        input_manager->setMasterPlayerOnly(true);
+        for (auto& p : NetworkConfig::get()->getNetworkPlayers())
+        {
+            StateManager::get()
+                ->createActivePlayer(std::get<1>(p), std::get<0>(p));
+        }
+        input_manager->getDeviceManager()->setAssignMode(ASSIGN);
+        TracksScreen::getInstance()->setNetworkTracks();
+        TracksScreen::getInstance()->push();
+    }
+    else
+    {
+        screen->push();
+    }
+
+    m_state.store(SELECTING_ASSETS);
+    Log::info("ClientLobby", "Selection starts now");
 }   // startSelection
 
 //-----------------------------------------------------------------------------
@@ -698,7 +701,9 @@ void ClientLobby::raceFinished(Event* event)
     Log::info("ClientLobby", "Server notified that the race is finished.");
     if (m_game_setup->isGrandPrix())
     {
-        // fastest lap, and than each kart before / after grand prix points
+        int t = data.getUInt32();
+        static_cast<LinearWorld*>(World::getWorld())->setFastestLapTicks(t);
+        race_manager->configGrandPrixResultFromNetwork(data);
     }
     else if (race_manager->modeHasLaps())
     {

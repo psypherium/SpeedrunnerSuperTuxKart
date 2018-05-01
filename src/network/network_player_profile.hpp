@@ -56,19 +56,21 @@ private:
     /** The selected kart id. */
     std::string m_kart_name; 
 
-    /** The unique id of the player for this race. The number is assigned
-     *  by the server (and it might not be the index of this player in the
-     *  peer list. */
-    uint8_t m_global_player_id;
+    /** The local player id relative to each peer. */
+    int m_local_player_id;
 
-    /** The kart id in the World class (pointer to AbstractKart). */
-    uint8_t m_world_kart_id;
+    /** Score if grand prix. */
+    int m_score;
+
+    /** Overall time if grand prix. */
+    float m_overall_time;
 
 public:
     NetworkPlayerProfile(std::shared_ptr<STKPeer> peer,
                          const irr::core::stringw &name, uint32_t host_id,
                          float default_kart_color, uint32_t online_id,
-                         PerPlayerDifficulty per_player_difficulty)
+                         PerPlayerDifficulty per_player_difficulty,
+                         uint8_t local_player_id)
     {
         m_peer                  = peer;
         m_player_name           = name;
@@ -76,51 +78,54 @@ public:
         m_default_kart_color    = default_kart_color;
         m_online_id             = online_id;
         m_per_player_difficulty = per_player_difficulty;
-        m_global_player_id      = 0;
-        m_world_kart_id         = 0;
+        m_local_player_id       = local_player_id;
+        resetGrandPrixData();
     }
     // ------------------------------------------------------------------------
     ~NetworkPlayerProfile() {}
     // ------------------------------------------------------------------------
     bool isLocalPlayer() const;
     // ------------------------------------------------------------------------
-    /** Sets the global player id of this player. */
-    void setGlobalPlayerId(int player_id) { m_global_player_id = player_id; }
-    // ------------------------------------------------------------------------
-    /** Returns the global ID of this player in this race. */
-    int getGlobalPlayerId() const { return m_global_player_id; }
-    // ------------------------------------------------------------------------
     /** Returns the host id of this player. */
-    uint32_t getHostId() const { return m_host_id; }
+    uint32_t getHostId() const                            { return m_host_id; }
     // ------------------------------------------------------------------------
     /** Sets the kart name for this player. */
     void setKartName(const std::string &kart_name) { m_kart_name = kart_name; }
     // ------------------------------------------------------------------------
     /** Returns the name of the kart this player has selected. */
-    const std::string &getKartName() const { return m_kart_name; }
+    const std::string &getKartName() const              { return m_kart_name; }
     // ------------------------------------------------------------------------
-    /** Sets the world kart id for this player. */
-    void setWorldKartID(int id) { m_world_kart_id = id; }
-    // ------------------------------------------------------------------------
-    /** Retuens the world kart id for this player. */
-    int getWorldKartID() const { return m_world_kart_id; }
+    /** Retuens the local player id for this player. */
+    int getLocalPlayerId() const                  { return m_local_player_id; }
     // ------------------------------------------------------------------------
     /** Returns the per-player difficulty. */
     PerPlayerDifficulty getPerPlayerDifficulty() const
-    {
-        return m_per_player_difficulty;
-    }   // getPerPlayerDifficulty
+                                            { return m_per_player_difficulty; }
     // ------------------------------------------------------------------------
     /** Returns the name of this player. */
-    const irr::core::stringw& getName() const { return m_player_name; }
+    const irr::core::stringw& getName() const         { return m_player_name; }
     // ------------------------------------------------------------------------
-    float getDefaultKartColor() const { return m_default_kart_color; }
+    float getDefaultKartColor() const          { return m_default_kart_color; }
     // ------------------------------------------------------------------------
-    uint32_t getOnlineId() const { return m_online_id; }
+    uint32_t getOnlineId() const                        { return m_online_id; }
     // ------------------------------------------------------------------------
-    bool isOfflineAccount() const { return m_online_id == 0; }
+    bool isOfflineAccount() const                  { return m_online_id == 0; }
     // ------------------------------------------------------------------------
-    std::shared_ptr<STKPeer> getPeer() const { return m_peer.lock(); }
+    std::shared_ptr<STKPeer> getPeer() const          { return m_peer.lock(); }
+    // ------------------------------------------------------------------------
+    int getScore() const                                    { return m_score; }
+    // ------------------------------------------------------------------------
+    float getOverallTime() const                     { return m_overall_time; }
+    // ------------------------------------------------------------------------
+    void setScore(int score)                               { m_score = score; }
+    // ------------------------------------------------------------------------
+    void setOverallTime(float time)                  { m_overall_time = time; }
+    // ------------------------------------------------------------------------
+    void resetGrandPrixData()
+    {
+        m_score = 0;
+        m_overall_time = 0.0f;
+    }
 
 };   // class NetworkPlayerProfile
 

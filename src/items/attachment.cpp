@@ -202,9 +202,10 @@ void Attachment::set(AttachmentType type, int ticks,
     RewindManager *rwm = RewindManager::get();
     if(rwm->isEnabled() && !rwm->isRewinding())
     {
-        BareNetworkString *buffer = new BareNetworkString(2);
-        saveState(buffer);
-        rwm->addEvent(this, buffer, /*confirmed*/true);
+        // FIXME!!!! For now commented out
+        //BareNetworkString *buffer = new BareNetworkString(2);
+        //saveState(buffer);
+        //rwm->addEvent(this, buffer, /*confirmed*/true);
     }
 #endif
 }   // set
@@ -605,9 +606,8 @@ void Attachment::update(int ticks)
     }
     case ATTACH_BUBBLEGUM_SHIELD:
     case ATTACH_NOLOK_BUBBLEGUM_SHIELD:
-        if (m_ticks_left < 0)
+        if (m_ticks_left <= 0)
         {
-            m_ticks_left = 0;
             if (m_bubble_explode_sound) m_bubble_explode_sound->deleteSFX();
             m_bubble_explode_sound =
                 SFXManager::get()->createSoundSource("bubblegum_explode");
