@@ -16,7 +16,7 @@
 ## Precompiled STK Git+SVN Build as of 20/04/18 (Linux x64):
 - https://github.com/psypherium/SpeedrunnerSuperTuxKart/releases/download/0.9.4-pre_alpha/stk-git.tar.gz
 
-New build soon, build requests welcomed.
+New build VERY soon, build requests welcomed.
 
 # Fork Info
 My plans for this fork are:
@@ -30,16 +30,14 @@ My plans for this fork are:
 - Conjure mare developers from thin air. (Note: retain typo as extra joke)
 - Change heaps of stuff, maybe learn about some C++ and other stuff.
 - Merge code and data repos?
-- Replace Kiki with "kawaiikiki"
-- Add Katie. (KDE dev mascot)
 - Seek out legacy code and annihilate it. (simple pipeline, etc)
 - OpenGL code refactoring in preperation for transition to vulkan renderer. (reduce CPU overhead)
 
 
 ### STK-M(P) {SuperTuxKart - Modern edition (PsyFork)} 1.0.0.0 Feature Plans:
 - Codebase is a copy of STK-M. (Includes all changes in STK-M plan)
-- Replace all .OGG files with 192khtz .OPUS CC BY-SA 4.0 techno. (except the Hacienda song)
-- music from psypherium, also planning to negotiate CC BY-SA 4.0 licensing arrangements from various underground artists. (binaerpilot? (stk-enterprise) HoQ? (Cornfield Crossing)
+- Replace some .OGG files with 192khtz .OPUS CC BY-SA 4.0 techno. (except the Hacienda song and the main theme, those tracks are banging)
+- music from psypherium, also planning to negotiate CC BY-SA 4.0 licensing arrangements from various underground artists. (Binaerpilot? for stk-enterprise)(HoQ? for Cornfield Crossing)
 
 
 ### Dependencies
