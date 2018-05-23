@@ -4,7 +4,7 @@
 <hr><br><br>
 
 ## Information
-- SuperTuxKart - Modern edition is an code learning experiment inspired by Alayan's codework on the speedrum timer mod and base game development.
+- SuperTuxKart - Modern edition is a code learning experiment inspired by Alayan's codework on the speedrum timer mod and base game development.
 - https://www.speedrun.com/user/Alayan
 - https://www.youtube.com/user/AlayanT
 - I highly encourage that anyone push to or pull from any of the strange experimental code that might end up here.
