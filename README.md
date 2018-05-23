@@ -9,7 +9,7 @@
 - https://www.youtube.com/user/AlayanT
 - I highly encourage that anyone push to or pull from any of the strange experimental code that might end up here.
 
-
+<br><br><hr>
 
 ## SpeedrunnerSuperTuxKart 0.9.3 Download (Linux x64):
 - SpeedrunnerSuperTuxKart is made from 0.9.3 frozen code + Alayan's timer mod.
