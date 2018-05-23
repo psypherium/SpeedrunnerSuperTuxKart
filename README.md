@@ -9,14 +9,26 @@
 - https://www.youtube.com/user/AlayanT
 - I highly encourage that anyone push to or pull from any of the strange experimental code that might end up here.
 
+
+
 ## SpeedrunnerSuperTuxKart 0.9.3 Download (Linux x64):
 - SpeedrunnerSuperTuxKart is made from 0.9.3 frozen code + Alayan's timer mod.
 - https://github.com/psypherium/SpeedrunnerSuperTuxKart/releases/download/0.9.3-timer/supertuxkart-0.9.3-speedrunner_edition.tar.gz
 
+## SpeedrunnerSuperTuxKart 0.9.3 Download (Windows x64):
+- https://github.com/psypherium/SpeedrunnerSuperTuxKart/releases/download/0.9.3-timer/Supertuxkart-TimerMod.exe
+
+<hr>
+
 ## Precompiled STK Git+SVN Build as of 20/04/18 (Linux x64):
 - https://github.com/psypherium/SpeedrunnerSuperTuxKart/releases/download/0.9.4-pre_alpha/stk-git.tar.gz
 
-New build VERY soon, build requests welcomed.
+## Precompiled STK Git+SVN Build as of 20/05/18 (Windows x64):
+- https://github.com/psypherium/SpeedrunnerSuperTuxKart/releases/download/0.9.4-pre_alpha-windows/stk-git-win64-20-05-2018.exe
+
+Build requests welcomed.
+
+<hr>
 
 # Fork Info
 My plans for this fork are:
