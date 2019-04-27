@@ -1,7 +1,10 @@
-# SuperTuxKart - Modern edition (STK-M)
+# SpeedrunnerSuperTuxKart - Community Timer Mod Binaries
 [![Build Status](https://travis-ci.org/psypherium/SpeedrunnerSuperTuxKart.svg?branch=master)](https://travis-ci.org/psypherium/SpeedrunnerSuperTuxKart)
 
 <hr><br><br>
+
+## SpeedrunnerSuperTuxKart 1.0 Download (Linux x64):
+- https://github.com/psypherium/SpeedrunnerSuperTuxKart/releases/tag/1.0
 
 ## Link to original code and author
 
@@ -9,10 +12,7 @@
 - https://www.speedrun.com/user/Alayan
 - https://www.youtube.com/user/AlayanT
 
-<br><br><hr>
-
-## SpeedrunnerSuperTuxKart 1.0 Download (Linux x64):
-- Placeholder
+<hr><br><br><hr><br><br>
 
 ## SpeedrunnerSuperTuxKart 0.9.3 Download (Linux x64):
 - SpeedrunnerSuperTuxKart is made from 0.9.3 frozen code + Alayan's timer mod.
