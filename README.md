@@ -3,13 +3,16 @@
 
 <hr><br><br>
 
-## Information
-- SuperTuxKart - Modern edition is a code learning experiment inspired by Alayan's codework on the speedrum timer mod and base game development.
+## Link to original code and author
+
+- https://github.com/STK-helper/stk-code/tree/Official1.0SpeedrunTimer
 - https://www.speedrun.com/user/Alayan
 - https://www.youtube.com/user/AlayanT
-- I highly encourage that anyone push to or pull from any of the strange experimental code that might end up here.
 
 <br><br><hr>
+
+## SpeedrunnerSuperTuxKart 1.0 Download (Linux x64):
+- Placeholder
 
 ## SpeedrunnerSuperTuxKart 0.9.3 Download (Linux x64):
 - SpeedrunnerSuperTuxKart is made from 0.9.3 frozen code + Alayan's timer mod.
@@ -20,37 +23,14 @@
 
 <hr>
 
-## Precompiled STK Git+SVN Build as of 20/04/18 (Linux x64):
-- https://github.com/psypherium/SpeedrunnerSuperTuxKart/releases/download/0.9.4-pre_alpha/stk-git.tar.gz
-
-## Precompiled STK Git+SVN Build as of 20/05/18 (Windows x64):
-- https://github.com/psypherium/SpeedrunnerSuperTuxKart/releases/download/0.9.4-pre_alpha-windows/stk-git-win64-20-05-2018.exe
-
 Build requests welcomed.
 
 <hr>
 
-# Fork Info
-My plans for this fork are:
-- ~~To host binary files for SSTK (Precompiled from 0.9.3 frozen code)~~ (Complete)
-- ~~To hold a precompiled binary of recent git code (0.9.4 pre-alpha)~~ (Complete)
-- To hold code for SSTK-M (+SSTK-MP patch)
-- To learn stuff about code
-
 ### STK-M {SuperTuxKart - Modern edition} 1.0.0 Feature Plans:
-- Actual (Non-joke) issues tracked though github.
-- Conjure mare developers from thin air. (Note: retain typo as extra joke)
-- Change heaps of stuff, maybe learn about some C++ and other stuff.
-- Merge code and data repos?
+- Issues tracked though github.
+- Merge code and data repos?!?!?!?!?!?!
 - Seek out legacy code and annihilate it. (simple pipeline, etc)
-- OpenGL code refactoring in preperation for transition to vulkan renderer. (reduce CPU overhead)
-
-
-### STK-M(P) {SuperTuxKart - Modern edition (PsyFork)} 1.0.0.0 Feature Plans:
-- Codebase is a copy of STK-M. (Includes all changes in STK-M plan)
-- Replace some .OGG files with 192khtz .OPUS CC BY-SA 4.0 techno. (except the Hacienda song and the main theme, those tracks are banging)
-- music from psypherium, also planning to negotiate CC BY-SA 4.0 licensing arrangements from various underground artists. (Binaerpilot? for stk-enterprise)(HoQ? for Cornfield Crossing)
-
 
 ### Dependencies
 
