@@ -1,7 +1,9 @@
 # SpeedrunnerSuperTuxKart - Community Timer Mod Binaries
 [![Build Status](https://travis-ci.org/psypherium/SpeedrunnerSuperTuxKart.svg?branch=master)](https://travis-ci.org/psypherium/SpeedrunnerSuperTuxKart)<hr>
 ## SpeedrunnerSuperTuxKart 1.0 Download (Linux x64):
-- https://github.com/psypherium/SpeedrunnerSuperTuxKart/releases/download/1.0/STK.1.0.Speedrunner.Binaries.7z
+- https://github.com/psypherium/SpeedrunnerSuperTuxKart/releases/download/1.0/Linux-STK-1.0-Speedrunner.7z
+## SpeedrunnerSuperTuxKart 1.0 Download (Windows x64):
+- https://github.com/psypherium/SpeedrunnerSuperTuxKart/releases/download/1.0/Windows-STK-1.0-Speedrunner.7z
 
 ## Link to original code and author
 
