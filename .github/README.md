@@ -10,7 +10,7 @@
 ## SuperTuxKart - Dark Edition (Timer Mod Inbuilt) (Linux x64)
 - https://github.com/psypherium/SpeedrunnerSuperTuxKart/releases/download/1.0_Dark_Edition/SuperTuxKart.-.Dark.Edition.1.0.7z
 
-## Links of speedrun timer original code and author
+## Links of speedrun timer code and author
 
 - https://github.com/STK-helper/stk-code/tree/Official1.0SpeedrunTimer
 - https://www.speedrun.com/user/Alayan
