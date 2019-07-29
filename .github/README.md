@@ -1,15 +1,24 @@
 # SpeedrunnerSuperTuxKart - Community Timer Mod Binaries
-[![Build Status](https://travis-ci.org/psypherium/SpeedrunnerSuperTuxKart.svg?branch=master)](https://travis-ci.org/psypherium/SpeedrunnerSuperTuxKart)<hr>
+
 ## SpeedrunnerSuperTuxKart 1.0 Download (Linux x64):
 - https://github.com/psypherium/SpeedrunnerSuperTuxKart/releases/download/1.0/Linux-STK-1.0-Speedrunner.7z
 ## SpeedrunnerSuperTuxKart 1.0 Download (Windows x64):
 - https://github.com/psypherium/SpeedrunnerSuperTuxKart/releases/download/1.0/Windows-STK-1.0-Speedrunner.7z
 
-## Link to original code and author
+## SuperTuxKart - Dark Edition (Timer Mod Inbuilt) (Linux x64)
+- https://github.com/psypherium/SpeedrunnerSuperTuxKart/releases/download/1.0_Dark_Edition/SuperTuxKart.-.Dark.Edition.1.0.7z
+
+## Links of speedrun timer original code and author
 
 - https://github.com/STK-helper/stk-code/tree/Official1.0SpeedrunTimer
 - https://www.speedrun.com/user/Alayan
 - https://www.youtube.com/user/AlayanT
+
+## Links of dark mod code and authhor
+
+ - https://github.com/Fouks0/stk-code/tree/1.0SpeedrunFouks
+ - https://www.speedrun.com/user/Fouks
+ - https://www.youtube.com/channel/UCwoIvfonTLPh_He27qS6G2A
 
 <hr><br><br><hr><br><br>
 
