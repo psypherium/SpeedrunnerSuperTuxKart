@@ -14,7 +14,7 @@
 - https://www.speedrun.com/user/Alayan
 - https://www.youtube.com/user/AlayanT
 
-## Links of dark mod code and authhor
+## Links of dark mod code and author
 
  - https://github.com/Fouks0/stk-code/tree/1.0SpeedrunFouks
  - https://www.speedrun.com/user/Fouks
