@@ -1,7 +1,7 @@
 # SpeedrunnerSuperTuxKart 1.0 - Community Timer Mod Binaries
 
 ## SpeedrunnerSuperTuxKart 1.0 Download (Linux x64) - >&=Libnettle7:
--placeholder
+- https://github.com/psypherium/SpeedrunnerSuperTuxKart/releases/download/1.0-nettle7/STK.1.0.Speedrunner.Binaries.-.Nettle7.tar.7z
 ## SpeedrunnerSuperTuxKart 1.0 Download (Linux x64) - <&=Libnettle6:
 - https://github.com/psypherium/SpeedrunnerSuperTuxKart/releases/download/1.0/Linux-STK-1.0-Speedrunner.7z
 ## SpeedrunnerSuperTuxKart 1.0 Download (Windows x64):
