@@ -16,7 +16,7 @@ export NDK_BUILD_SCRIPT="$DIRNAME/Android.mk"
 export CPU_CORE="-j$(($(nproc) + 1))"
 
 if [ -z "$STK_MIN_ANDROID_SDK" ]; then
-    export STK_MIN_ANDROID_SDK=16
+    export STK_MIN_ANDROID_SDK=23
 fi
 
 if [ -z "$STK_TARGET_ANDROID_SDK" ]; then
